@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>PiFace Digital 2 controller</title>
+<script src="piface_digital_2.js"></script>
+<script>
+  var source = new EventSource ("events.qif");
+  source.addEventListener ("piface", (event) => {
+    var bitid;
+    for ( bitid = 0; bitid < 8; bitid++ ) {
+      var id = "di" + bitid;
+      document.getElementById(id).innerHTML = event.data.charAt(bitid) ;
+    }
+    if ( event.data.length > 8 ) {
+      for ( bitid = 0; bitid < 8; bitid++ ) {
+        var id = "t" + bitid;
+        document.getElementById(id).innerHTML = event.data.charAt(bitid+8) ;
+      }
+    }
+  });
+</script>
+</head>
+<body>
+<table>
+<tr><td valign="top">
+Digital inputs:&nbsp; &nbsp;
+</td><td>
+<table>
+<tr>
+  <td>7</td>
+  <td>6</td>
+  <td>5</td>
+  <td>4</td>
+  <td> </td>
+  <td>3</td>
+  <td>2</td>
+  <td>1</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td><span id="di7">?</span></td>
+  <td><span id="di6">?</span></td>
+  <td><span id="di5">?</span></td>
+  <td><span id="di4">?</span></td>
+  <td> </td>
+  <td><span id="di3">?</span></td>
+  <td><span id="di2">?</span></td>
+  <td><span id="di1">?</span></td>
+  <td><span id="di0">?</span></td>
+</tr>
+</td>
+</table>
+</td>
+</tr>
+</table>
+<br>
+&nbsp;<br>
+Outputs:&nbsp; &nbsp;
+<button type="button" onclick="toggle(7)" id="t7">0</button>
+<button type="button" onclick="toggle(6)" id="t6">0</button>
+<button type="button" onclick="toggle(5)" id="t5">0</button>
+<button type="button" onclick="toggle(4)" id="t4">0</button>
+&nbsp;
+<button type="button" onclick="toggle(3)" id="t3">0</button>
+<button type="button" onclick="toggle(2)" id="t2">0</button>
+<button type="button" onclick="toggle(1)" style="background-color: #FFA0FF" id="t1">0</button>
+<button type="button" onclick="toggle(0)" style="background-color: #FFA0FF" id="t0">0</button>
+</body>
+</html>

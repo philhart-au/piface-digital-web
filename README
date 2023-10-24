@@ -1,0 +1,49 @@
+File: README
+
+DEPENDENCIES:
+libmcp23s17
+libpifacedigital
+
+SOURCE FILES:
+server.cpp
+utils.c
+
+CODE STRUCTURE:
+server.cpp depends on libpifacedigital which in turn depends on libmcp23s17.
+
+SOURCE CODE LOCATIONS:
+The two dependencies are available from github, and can be found via
+http://piface.github.io/libpifacedigital/ , which also provides guidance
+for downloading, building and testing things. It also provides more
+background for the build guide provided below.
+
+BUILD GUIDE.
+
+Download the dependencies:
+$ git clone https://github.com/piface/libmcp23s17.git
+$ git clone https://github.com/piface/libpifacedigital.git
+
+Build the library:
+$ cd libmcp23s17/ && make && cd -
+$ cd libpifacedigital/ && make
+
+Use raspi-config to enable SPI.
+
+Build and use the test application:
+$ make example
+$ ./example
+
+Go back to the home directory:
+
+$ cd -
+
+Download the application:
+
+$ git clone https://github.com/philhart-au/piface-digital-web.git
+
+Build the server application:
+$ make
+
+Test the server application:
+$ sudo ./server 80
+
