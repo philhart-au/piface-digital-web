@@ -34,11 +34,9 @@ $ make example
 $ ./example
 
 Go back to the home directory:
-
 $ cd -
 
 Download the application:
-
 $ git clone https://github.com/philhart-au/piface-digital-web.git
 
 Build the server application:
@@ -48,3 +46,8 @@ $ make
 Test the server application:
 $ sudo ./server 80
 
+To run in verbose mode:
+$ sudo ./server 80 v
+
+To check version number:
+$ ./server 80 a
