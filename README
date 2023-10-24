@@ -42,6 +42,7 @@ Download the application:
 $ git clone https://github.com/philhart-au/piface-digital-web.git
 
 Build the server application:
+$ cd piface-digital-web
 $ make
 
 Test the server application:
